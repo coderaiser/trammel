@@ -1,0 +1,23 @@
+{
+  "name": "trammel",
+  "version": "0.9.2",
+  "author": "coderaiser <mnemonic.enemy@gmail.com> (https://github.com/coderaiser)",
+  "description": "Get size of directory",
+  "homepage": "http://github.com/coderaiser/trammel",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coderaiser/trammel.git"
+  },
+  "bin": {
+    "trammel": "./bin/trammel"
+  },
+  "dependencies": {
+    "util-io": "^1.2.0"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.4.x"
+  },
+  "main": "lib/size.js"
+}
