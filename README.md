@@ -1,7 +1,8 @@
-trammel
-=======
+# Trammel
 
 Get directory size.
+
+## Example
 
 ```js
 var trammel = require('trammel');
@@ -16,9 +17,15 @@ trammel.get('.', {type: 'raw'}, function(error, size) {
     //undefined 59974
 });
 
-trammel.get('do not exist', {stopOnError: true, type: raw}, function(error, size) {
-    console.log(error, size);
-    //{ [Error: ENOENT, lstat 'do not exist'] errno: 34, code: 'ENOENT', path: 'do not exist' } 0
+trammel.get('do not exist', {stopOnError: true}, function(error, size) {
+    if (error)
+        console.error(error.message);
+    else
+        console.log(size);
 });
 
 ```
+
+## License
+
+MIT
