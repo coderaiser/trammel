@@ -7,17 +7,17 @@ Get directory size.
 ```js
 var trammel = require('trammel');
 
-trammel.get('.', function(error, size) {
+trammel('.', function(error, size) {
     console.log(error, size);
     //undefined '58.47kb'
 });
 
-trammel.get('.', {type: 'raw'}, function(error, size) {
+trammel('.', {type: 'raw'}, function(error, size) {
     console.log(error, size);
     //undefined 59974
 });
 
-trammel.get('do not exist', {stopOnError: true}, function(error, size) {
+trammel('do not exist', {stopOnError: true}, function(error, size) {
     if (error)
         console.error(error.message);
     else
