@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "format-io": "~0.9.5",
-    "util-io": "~1.4.0"
+    "util-io": "~1.6.3"
   },
   "devDependencies": {},
   "license": "MIT",
