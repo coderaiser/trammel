@@ -9,8 +9,7 @@
     "url": "git://github.com/coderaiser/trammel.git"
   },
   "dependencies": {
-    "format-io": "~0.9.5",
-    "util-io": "~1.6.3"
+    "format-io": "~0.9.5"
   },
   "devDependencies": {},
   "license": "MIT",
