@@ -2,6 +2,8 @@
 
 Get directory size.
 
+If you want get realtime size updates use [dirsize](https://github.com/coderaiser/node-dirsize). 
+
 ## Example
 
 ```js
