@@ -2,28 +2,28 @@
 
 Get directory size.
 
-If you want get realtime size updates use [dirsize](https://github.com/coderaiser/node-dirsize). 
+If you want get realtime size updates use [dirsize](https://github.com/coderaiser/node-dirsize).
 
 ## Example
 
 ```js
-var trammel = require('trammel');
+const trammel = require('trammel');
 
-trammel('.', function(error, size) {
+trammel('.', (error, size) => {
     console.log(error, size);
     //undefined '58.47kb'
 });
 
-trammel('.', {type: 'raw'}, function(error, size) {
+trammel('.', {type: 'raw'}, (error, size) => {
     console.log(error, size);
     //undefined 59974
 });
 
-trammel('do not exist', {stopOnError: true}, function(error, size) {
+trammel('do not exist', {stopOnError: true}, (error, size) => {
     if (error)
-        console.error(error.message);
-    else
-        console.log(size);
+        return console.error(error.message);
+    
+    console.log(size);
 });
 
 ```
@@ -31,3 +31,4 @@ trammel('do not exist', {stopOnError: true}, function(error, size) {
 ## License
 
 MIT
+

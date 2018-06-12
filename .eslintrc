@@ -1,0 +1,22 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017,
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "semi": "error",
+        "no-console": 0,
+        "no-use-before-define": ["error", "nofunc"]
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:node/recommended"
+    ],
+    "plugins": [
+        "node"
+    ]
+}
