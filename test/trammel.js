@@ -46,6 +46,13 @@ test('trammel: stopOnError: false', async (t) => {
     t.end();
 });
 
+test('trammel: error', async (t) => {
+    const [, size] = await tryToCatch(trammel_, 'abcd');
+    
+    t.equal(size, '0b', 'should equal');
+    t.end();
+});
+
 test('trammel: stopOnError: true', async (t) => {
     const [e] = await tryToCatch(trammel_, 'abcd', {stopOnError: true});
     
