@@ -1,3 +1,13 @@
+2019.04.01, v2.1.0
+
+fix:
+- (trammel) error handling
+
+feature:
+- (trammel) size -> trammel
+- (package) eslint v5.0.1
+
+
 2018.06.25, v2.0.1
 
 fix:
