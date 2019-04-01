@@ -37,5 +37,8 @@
   "engines": {
     "node": ">=4"
   },
-  "main": "lib/trammel.js"
+  "main": "lib/trammel.js",
+  "publishConfig": {
+    "access": "public"
+  }
 }
