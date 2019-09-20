@@ -1,3 +1,11 @@
+2019.09.20, v3.0.0
+
+feature:
+- (trammel) drop support of node < 8
+- (package) eslint v6.4.0
+- (package) nyc v14.1.1
+
+
 2019.04.01, v2.1.0
 
 fix:
