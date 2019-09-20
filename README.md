@@ -1,4 +1,4 @@
-# Trammel [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [![Coverage Status][CoverageIMGURL]][CoverageURL]
+# Trammel [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
 
 [NPMIMGURL]:                https://img.shields.io/npm/v/trammel.svg?style=flat
 [BuildStatusIMGURL]:        https://img.shields.io/travis/coderaiser/trammel/master.svg?style=flat
