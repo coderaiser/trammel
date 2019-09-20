@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const test = require('tape');
+const test = require('supertape');
 const tryToCatch = require('try-to-catch');
 const tryCatch = require('try-catch');
 const {promisify} = require('util');
@@ -31,7 +31,7 @@ test('trammel: size of a directory', async (t) => {
 test('trammel: size of a directory: empty dir: raw', async (t) => {
     const expected = 0;
     const [, size] = await tryToCatch(trammel_, `${fixturePath}/empty-dir`, {
-        type: 'raw'
+        type: 'raw',
     });
     
     t.equal(expected, size, 'should equal');
@@ -67,7 +67,7 @@ test('trammel: stopOnError: true: can not readdir', async (t) => {
     fs.readdir = (dir, fn) => fn(error);
     
     const [e] = await tryToCatch(trammel_, fixturePath, {
-        stopOnError: true
+        stopOnError: true,
     });
     
     fs.readdir = readdir;
