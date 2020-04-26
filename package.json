@@ -21,7 +21,9 @@
     "watcher": "madrun watcher"
   },
   "dependencies": {
-    "format-io": "^2.0.0"
+    "events.once": "^2.0.2",
+    "format-io": "^2.0.0",
+    "try-to-catch": "^3.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
@@ -29,17 +31,15 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-putout": "^3.7.1",
     "madrun": "^5.5.0",
+    "mock-require": "^3.0.3",
     "nodemon": "^1.17.5",
     "nyc": "^15.0.1",
     "putout": "^7.23.0",
-    "supertape": "^1.2.3",
-    "tape": "^4.9.1",
-    "try-catch": "^3.0.0",
-    "try-to-catch": "^3.0.0"
+    "supertape": "^1.2.3"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "main": "lib/trammel.js",
   "publishConfig": {

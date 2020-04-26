@@ -5,16 +5,15 @@ const fs = require('fs');
 
 const test = require('supertape');
 const tryToCatch = require('try-to-catch');
-const tryCatch = require('try-catch');
-const {promisify} = require('util');
+const {reRequire} = require('mock-require');
+
 const trammel = require('..');
-const trammel_ = promisify(trammel);
 
 const fixturePath = path.join(__dirname, 'fixture');
 
 test('trammel: size of a file', async (t) => {
     const expected = '12b';
-    const [, size] = await tryToCatch(trammel_, `${fixturePath}/file.txt`);
+    const [, size] = await tryToCatch(trammel, `${fixturePath}/file.txt`);
     
     t.equal(expected, size, 'should equal');
     t.end();
@@ -22,7 +21,7 @@ test('trammel: size of a file', async (t) => {
 
 test('trammel: size of a directory', async (t) => {
     const expected = '12b';
-    const [, size] = await tryToCatch(trammel_, `${fixturePath}/dir`);
+    const [, size] = await tryToCatch(trammel, `${fixturePath}/dir`);
     
     t.equal(expected, size, 'should equal');
     t.end();
@@ -30,7 +29,7 @@ test('trammel: size of a directory', async (t) => {
 
 test('trammel: size of a directory: empty dir: raw', async (t) => {
     const expected = 0;
-    const [, size] = await tryToCatch(trammel_, `${fixturePath}/empty-dir`, {
+    const [, size] = await tryToCatch(trammel, `${fixturePath}/empty-dir`, {
         type: 'raw',
     });
     
@@ -40,21 +39,21 @@ test('trammel: size of a directory: empty dir: raw', async (t) => {
 
 test('trammel: stopOnError: false', async (t) => {
     const expected = '0b';
-    const [, size] = await tryToCatch(trammel_, 'abcef');
+    const [, size] = await tryToCatch(trammel, 'abcef');
     
     t.equal(size, expected, 'should equal');
     t.end();
 });
 
 test('trammel: error', async (t) => {
-    const [, size] = await tryToCatch(trammel_, 'abcd');
+    const [, size] = await tryToCatch(trammel, 'abcd');
     
     t.equal(size, '0b', 'should equal');
     t.end();
 });
 
 test('trammel: stopOnError: true', async (t) => {
-    const [e] = await tryToCatch(trammel_, 'abcd', {stopOnError: true});
+    const [e] = await tryToCatch(trammel, 'abcd', {stopOnError: true});
     
     t.equal(e.code, 'ENOENT', 'should equal');
     t.end();
@@ -62,45 +61,56 @@ test('trammel: stopOnError: true', async (t) => {
 
 test('trammel: stopOnError: true: can not readdir', async (t) => {
     const error = Error('hello');
-    const {readdir} = fs;
+    const {readdir} = fs.promises;
     
-    fs.readdir = (dir, fn) => fn(error);
+    fs.promises.readdir = async () => {
+        throw error;
+    };
     
-    const [e] = await tryToCatch(trammel_, fixturePath, {
+    const trammel = reRequire('..');
+    
+    const [e] = await tryToCatch(trammel, fixturePath, {
         stopOnError: true,
     });
     
-    fs.readdir = readdir;
+    fs.promises.readdir = readdir;
     
     t.equal(e.message, 'hello', 'should equal');
     t.end();
 });
 
+test('trammel: readdir: empty', async (t) => {
+    const {readdir} = fs.promises;
+    
+    fs.promises.readdir = async () => [];
+    
+    const trammel = reRequire('..');
+    
+    const size = await trammel(fixturePath, {
+        type: 'raw',
+    });
+    
+    fs.promises.readdir = readdir;
+    
+    t.equal(size, 0, 'should equal');
+    t.end();
+});
+
 test('trammel: can not readdir', async (t) => {
     const expected = '0b';
-    const {readdir} = fs;
+    const {readdir} = fs.promises;
     
-    fs.readdir = (dir, fn) => fn(Error('hi'));
+    fs.promises.readdir = () => {
+        throw Error('hi');
+    };
     
-    const [, size] = await tryToCatch(trammel_, fixturePath);
+    const trammel = reRequire('..');
     
-    fs.readdir = readdir;
+    const [, size] = await tryToCatch(trammel, fixturePath);
+    
+    fs.promises.readdir = readdir;
     
     t.equal(size, expected, 'should equal');
-    t.end();
-});
-
-test('trammel: arguments: no', async (t) => {
-    const [e] = tryCatch(trammel);
-    
-    t.equal(e.message, 'dir could not be empty!', 'should equal');
-    t.end();
-});
-
-test('trammel: arguments: no callback', async (t) => {
-    const [e] = tryCatch(trammel, '/');
-    
-    t.equal(e.message, 'callback could not be empty!', 'should equal');
     t.end();
 });
 
