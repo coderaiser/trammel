@@ -34,7 +34,7 @@
     "putout": "^7.23.0",
     "supertape": "^1.2.3",
     "tape": "^4.9.1",
-    "try-catch": "^2.0.0",
+    "try-catch": "^3.0.0",
     "try-to-catch": "^1.0.2"
   },
   "license": "MIT",
