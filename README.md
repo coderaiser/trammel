@@ -27,7 +27,7 @@ await trammel('.', {type: 'raw'});
 59974
 
 await trammel('do not exist', {stopOnError: true});
-// returns
+// throws
 Error
 ```
 
