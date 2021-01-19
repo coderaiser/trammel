@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
-    "eslint": "^6.4.0",
+    "eslint": "^7.18.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-putout": "^3.7.1",
     "madrun": "^5.5.0",
