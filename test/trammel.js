@@ -15,7 +15,7 @@ test('trammel: size of a file', async (t) => {
     const expected = '12b';
     const [, size] = await tryToCatch(trammel, `${fixturePath}/file.txt`);
     
-    t.equal(expected, size, 'should equal');
+    t.equal(size, expected, 'should equal');
     t.end();
 });
 
@@ -23,7 +23,7 @@ test('trammel: size of a directory', async (t) => {
     const expected = '12b';
     const [, size] = await tryToCatch(trammel, `${fixturePath}/dir`);
     
-    t.equal(expected, size, 'should equal');
+    t.equal(size, expected, 'should equal');
     t.end();
 });
 
@@ -33,7 +33,7 @@ test('trammel: size of a directory: empty dir: raw', async (t) => {
         type: 'raw',
     });
     
-    t.equal(expected, size, 'should equal');
+    t.equal(size, expected, 'should equal');
     t.end();
 });
 

@@ -21,7 +21,6 @@
     "watcher": "madrun watcher"
   },
   "dependencies": {
-    "events.once": "^2.0.2",
     "format-io": "^2.0.0",
     "try-to-catch": "^3.0.0"
   },
@@ -35,11 +34,11 @@
     "nodemon": "^2.0.7",
     "nyc": "^15.0.1",
     "putout": "^13.7.1",
-    "supertape": "^1.2.3"
+    "supertape": "^4.7.0"
   },
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "main": "lib/trammel.js",
   "publishConfig": {
